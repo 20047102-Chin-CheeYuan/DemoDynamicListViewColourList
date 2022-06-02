@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etElement;
     Button btnAdd;
     ListView lvColour;
+    EditText etIndexElement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         etElement = findViewById(R.id.editTextColour);
         btnAdd = findViewById(R.id.buttonAddItem);
         lvColour = findViewById(R.id.listViewColour);
+        etIndexElement = findViewById(R.id.editTextIndex);
 
         ArrayList<String> alColours;
         alColours = new ArrayList<String>();
@@ -39,14 +41,11 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etElement.getText().toString().trim().length() == 0) {
-                    Toast toast = Toast.makeText(MainActivity.this, "The field is empty!", Toast.LENGTH_LONG);
-                    toast.show();
-                } else {
-                    String colourName = etElement.getText().toString();
-                    alColours.add(colourName);
-                    aaColour.notifyDataSetChanged();
-                }
+
+                String colour = etElement.getText().toString();
+                int pos = Integer.parseInt(etIndexElement.getText().toString());
+                alColours.add(pos, colour);
+                aaColour.notifyDataSetChanged();
             }
         });
     }
