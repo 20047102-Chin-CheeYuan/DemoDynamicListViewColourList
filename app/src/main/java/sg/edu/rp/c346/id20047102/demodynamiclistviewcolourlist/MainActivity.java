@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etElement;
     Button btnAdd;
+    Button btnRemove;
+    Button btnUpdate;
     ListView lvColour;
     EditText etIndexElement;
 
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         etElement = findViewById(R.id.editTextColour);
         btnAdd = findViewById(R.id.buttonAddItem);
+        btnRemove = findViewById(R.id.buttonRemoveItem);
+        btnUpdate = findViewById(R.id.buttonUpdateItem);
         lvColour = findViewById(R.id.listViewColour);
         etIndexElement = findViewById(R.id.editTextIndex);
 
@@ -42,13 +46,44 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String colour = etElement.getText().toString();
                 int pos = Integer.parseInt(etIndexElement.getText().toString());
                 alColours.add(pos, colour);
                 aaColour.notifyDataSetChanged();
             }
         });
+
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = Integer.parseInt(etIndexElement.getText().toString());
+
+                for (int i = 0; i < alColours.size(); i++) {
+                    if (pos == i) {
+                        alColours.remove(i);
+                        aaColour.notifyDataSetChanged();
+                    }
+                }
+
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String colour = etElement.getText().toString();
+                int pos = Integer.parseInt(etIndexElement.getText().toString());
+
+                for (int i = 0; i < alColours.size(); i++) {
+                    if (pos == i) {
+                        alColours.set(i, colour);
+                        aaColour.notifyDataSetChanged();
+                    }
+                }
+
+            }
+        });
+
 
         lvColour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

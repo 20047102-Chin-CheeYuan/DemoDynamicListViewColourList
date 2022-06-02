@@ -31,7 +31,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="10dp"
             android:text="@string/btnAddColour" />
+
+        <Button
+            android:id="@+id/buttonRemoveItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="@string/btnRemoveColour" />
+
+        <Button
+            android:id="@+id/buttonUpdateItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="@string/btnUpdateColour" />
 
     </LinearLayout>
 
