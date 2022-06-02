@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +47,17 @@ public class MainActivity extends AppCompatActivity {
                 int pos = Integer.parseInt(etIndexElement.getText().toString());
                 alColours.add(pos, colour);
                 aaColour.notifyDataSetChanged();
+            }
+        });
+
+        lvColour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < alColours.size(); i++) {
+                    if (position == i) {
+                        Toast.makeText(MainActivity.this, alColours.get(i), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }
